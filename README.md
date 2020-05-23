@@ -4,4 +4,4 @@ Bind Value From Bundle (Activity->Activity / Activity->Fragment)
 @GetValue("extra-key", "type_value")
 val value: Type
 
-/** StdBindValue.bindValue(<Class>, bundle) */
+/** StdBindValue.bindValue(class, bundle) */
