@@ -11,20 +11,7 @@ import android.os.Bundle
  */
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FIELD)
-annotation class GetValue(val key: String, val type: TYPE)
-
-/**
- * EnumClassTypeValue
- */
-enum class TYPE {
-    INT,
-    LONG,
-    FLOAT,
-    DOUBLE,
-    STRING,
-    SERIALIZABLE,
-    PARCELABLE
-}
+annotation class GetValue(val key: String)
 
 object StdBindValue {
     /**
@@ -32,35 +19,12 @@ object StdBindValue {
      */
     fun bindValue(target: Any, bundle: Bundle) {
         val declaredFields = target::class.java.declaredFields
-
         for (field in declaredFields) {
             for (annotation in field.annotations) {
                 when (annotation) {
                     is GetValue -> {
                         field.isAccessible = true
-                        when (annotation.type) {
-                            TYPE.INT -> {
-                                field.set(target, bundle.getInt(annotation.key))
-                            }
-                            TYPE.LONG -> {
-                                field.set(target, bundle.getLong(annotation.key))
-                            }
-                            TYPE.FLOAT -> {
-                                field.set(target, bundle.getFloat(annotation.key))
-                            }
-                            TYPE.DOUBLE -> {
-                                field.set(target, bundle.getDouble(annotation.key))
-                            }
-                            TYPE.STRING -> {
-                                field.set(target, bundle.getString(annotation.key))
-                            }
-                            TYPE.SERIALIZABLE -> {
-                                field.set(target, bundle.getSerializable(annotation.key))
-                            }
-                            TYPE.PARCELABLE -> {
-                                field.set(target, bundle.getParcelable(annotation.key))
-                            }
-                        }
+                        field.set(target, bundle.get(annotation.key))
                     }
                 }
             }

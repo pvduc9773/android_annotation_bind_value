@@ -5,23 +5,26 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_second.*
 
-
 class SecondActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_STRING = "extra-string"
         const val EXTRA_INT = "extra-int"
         const val EXTRA_SERIALIZABLE = "extra-serializable"
+        const val EXTRA_ARRAY = "extra-array"
     }
 
-    @GetValue(EXTRA_STRING, TYPE.STRING)
+    @GetValue(EXTRA_STRING)
     private val valueString: String? = null
 
-    @GetValue(EXTRA_INT, TYPE.INT)
+    @GetValue(EXTRA_INT)
     private val valueInt: Int? = null
 
-    @GetValue(EXTRA_SERIALIZABLE, TYPE.SERIALIZABLE)
+    @GetValue(EXTRA_SERIALIZABLE)
     private val valueSerializable: User? = null
+
+    @GetValue(EXTRA_ARRAY)
+    private val valueArray: Array<User>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

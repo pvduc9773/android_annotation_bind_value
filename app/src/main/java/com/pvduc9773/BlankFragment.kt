@@ -18,13 +18,13 @@ class BlankFragment : Fragment() {
         const val EXTRA_SERIALIZABLE = "extra-serializable"
     }
 
-    @GetValue(EXTRA_STRING, TYPE.STRING)
+    @GetValue(EXTRA_STRING)
     private val valueString: String? = null
 
-    @GetValue(EXTRA_INT, TYPE.INT)
+    @GetValue(EXTRA_INT)
     private val valueInt: Int? = null
 
-    @GetValue(EXTRA_SERIALIZABLE, TYPE.SERIALIZABLE)
+    @GetValue(EXTRA_SERIALIZABLE)
     private val valueSerializable: User? = null
 
     override fun onCreateView(

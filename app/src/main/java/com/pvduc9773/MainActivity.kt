@@ -12,10 +12,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         tvHelloWorld.setOnClickListener {
+            val user = User("001", "pvduc9773")
+            val arr : Array<User> = arrayOf(user, user, user, user)
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra(SecondActivity.EXTRA_STRING, "value-string")
             intent.putExtra(SecondActivity.EXTRA_INT, 1111)
             intent.putExtra(SecondActivity.EXTRA_SERIALIZABLE, User("001", "pvduc9773"))
+            intent.putExtra(SecondActivity.EXTRA_ARRAY, arr)
             startActivity(intent)
         }
     }
