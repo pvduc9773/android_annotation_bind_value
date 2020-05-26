@@ -18,13 +18,13 @@ class BlankFragment : Fragment() {
         const val EXTRA_SERIALIZABLE = "extra-serializable"
     }
 
-    @GetValue(EXTRA_STRING)
+    @StdExtra(EXTRA_STRING)
     private val valueString: String? = null
 
-    @GetValue(EXTRA_INT)
+    @StdExtra(EXTRA_INT)
     private val valueInt: Int? = null
 
-    @GetValue(EXTRA_SERIALIZABLE)
+    @StdExtra(EXTRA_SERIALIZABLE)
     private val valueSerializable: User? = null
 
     override fun onCreateView(
@@ -37,7 +37,7 @@ class BlankFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let { StdBindValue.bindValue(this, it) }
+        arguments?.let { StdBindValue.bind(this, it) }
         Toast.makeText(context, valueSerializable.toString(), Toast.LENGTH_SHORT).show()
     }
 

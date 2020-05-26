@@ -7,22 +7,22 @@ import android.os.Bundle
  */
 
 /**
- * Annotation @GetValue
+ * Annotation @StdExtra
  */
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FIELD)
-annotation class GetValue(val key: String)
+annotation class StdExtra(val key: String)
 
 object StdBindValue {
     /**
      * BindData
      */
-    fun bindValue(target: Any, bundle: Bundle) {
+    fun bind(target: Any, bundle: Bundle) {
         val declaredFields = target::class.java.declaredFields
         for (field in declaredFields) {
             for (annotation in field.annotations) {
                 when (annotation) {
-                    is GetValue -> {
+                    is StdExtra -> {
                         field.isAccessible = true
                         field.set(target, bundle.get(annotation.key))
                     }

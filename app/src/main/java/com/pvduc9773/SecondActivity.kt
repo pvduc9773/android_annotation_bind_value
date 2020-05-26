@@ -14,22 +14,22 @@ class SecondActivity : AppCompatActivity() {
         const val EXTRA_ARRAY = "extra-array"
     }
 
-    @GetValue(EXTRA_STRING)
+    @StdExtra(EXTRA_STRING)
     private val valueString: String? = null
 
-    @GetValue(EXTRA_INT)
-    private val valueInt: Int? = null
+    @StdExtra(EXTRA_INT)
+    private val valueInt: Int? = 100
 
-    @GetValue(EXTRA_SERIALIZABLE)
+    @StdExtra(EXTRA_SERIALIZABLE)
     private val valueSerializable: User? = null
 
-    @GetValue(EXTRA_ARRAY)
+    @StdExtra(EXTRA_ARRAY)
     private val valueArray: Array<User>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        intent.extras?.let { StdBindValue.bindValue(this, it) }
+        intent.extras?.let { StdBindValue.bind(this, it) }
         Toast.makeText(this, valueString, Toast.LENGTH_SHORT).show()
         Toast.makeText(this, valueInt.toString(), Toast.LENGTH_SHORT).show()
         Toast.makeText(this, valueSerializable.toString(), Toast.LENGTH_SHORT).show()
